@@ -1,0 +1,52 @@
+@model IEnumerable<SchoolSuppliesStore.Models.Product>
+@{
+    ViewData["Title"] = "Cửa hàng dụng cụ học tập";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Dụng cụ học tập chất lượng</h1>
+    
+    <div class="alert alert-info text-center">
+        Chúng tôi hiện có <strong>@ViewData["ProductCount"]</strong> sản phẩm thuộc 
+        @foreach (var category in ViewData["Categories"] as List<string>)
+        {
+            <span class="badge badge-primary ml-1">@category</span>
+        }
+    </div>
+    
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="text-danger font-weight-bold">@product.Price.ToString("C")</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="#" class="btn btn-primary btn-block">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card-img-top {
+            height: 200px;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+}
