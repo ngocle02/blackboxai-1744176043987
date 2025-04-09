@@ -1,0 +1,69 @@
+@model IEnumerable<SchoolSuppliesStore.Models.Product>
+@{
+    ViewData["Title"] = ViewData["Category"] != null ? 
+        $"Dụng cụ học tập - {ViewData["Category"]}" : 
+        "Tất cả sản phẩm";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <h2>@ViewData["Title"]</h2>
+        </div>
+        <div class="col-md-4">
+            <form asp-action="Index" method="get">
+                <div class="input-group" style="max-width: 300px;">
+                    <input type="text" class="form-control" name="searchString" 
+                           value="@ViewData["CurrentFilter"]" placeholder="Tìm kiếm sản phẩm..."
+                           style="border-radius: 4px 0 0 4px;">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit"
+                                style="border-radius: 0 4px 4px 0; border-left: none;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 text-right">
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-outline-primary @(string.IsNullOrEmpty(ViewData["Category"]?.ToString()) ? "active" : "")" 
+                           asp-action="Index">Tất cả</a>
+                        @foreach (var category in ViewData["Categories"] as List<string>)
+                        {
+                            <a class="btn btn-outline-primary @(ViewData["Category"]?.ToString() == category ? "active" : "")" 
+                               asp-action="Index" 
+                               asp-route-category="@category">@category</a>
+                        }
+                    </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="text-danger font-weight-bold">@product.Price.ToString("C")</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-info">Chi tiết</a>
+                        <a href="#" class="btn btn-primary float-right">Thêm giỏ</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+}
