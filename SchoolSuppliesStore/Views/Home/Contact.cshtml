@@ -1,0 +1,74 @@
+@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+<div class="container mt-4">
+    <h2>Liên hệ với chúng tôi</h2>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Thông tin liên hệ</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-phone text-primary mr-2"></i>
+                            <strong>Điện thoại:</strong> 0123 456 789
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-envelope text-primary mr-2"></i>
+                            <strong>Email:</strong> info@dungcuhoctap.com
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-clock text-primary mr-2"></i>
+                            <strong>Giờ mở cửa:</strong> 8:00 - 20:00 (Thứ 2 - Chủ nhật)
+                        </li>
+                    </ul>
+                    <div class="mt-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.123456789012!2d106.12345678901234!3d10.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDA3JzI0LjQiTiAxMDbCsDA3JzI0LjQiRQ!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Gửi tin nhắn</h4>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Họ tên</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Nội dung</label>
+                            <textarea class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $('#contactForm').submit(function(e) {
+            e.preventDefault();
+            toastr.success('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
+            this.reset();
+        });
+    </script>
+}
