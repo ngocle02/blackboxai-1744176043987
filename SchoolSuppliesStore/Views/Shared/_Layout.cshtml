@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cửa hàng dụng cụ học tập</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-pencil-alt mr-2"></i>Dụng cụ học tập
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Products" asp-action="Index">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Contact">Liên hệ</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-shopping-cart"></i> Giỏ hàng
+                                <span class="badge badge-light ml-1">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-light">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Cửa hàng dụng cụ học tập</h5>
+                    <p>Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM</p>
+                    <p>Điện thoại: 0123 456 789</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Danh mục</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Vở viết</a></li>
+                        <li><a href="#">Bút các loại</a></li>
+                        <li><a href="#">Cặp sách</a></li>
+                        <li><a href="#">Dụng cụ học tập</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Kết nối với chúng tôi</h5>
+                    <a href="#" class="text-dark mr-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="text-dark mr-2"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-dark mr-2"><i class="fab fa-youtube fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
